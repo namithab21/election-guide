@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import { CalendarPlus, CheckCircle2, ChevronRight, MapPin, ExternalLink, IdCard, Search, FileText, ArrowRight } from 'lucide-react';
+import { CalendarPlus, CheckCircle2, MapPin, ExternalLink, IdCard, Search, FileText, ArrowRight } from 'lucide-react';
 import { generateCalendarLink } from '@/lib/calendar';
 
 type VoterType = 'new' | 'existing' | 'nri' | 'shifting' | null;
@@ -48,7 +48,7 @@ export function EligibilityWizard() {
   const [pinError, setPinError] = useState('');
   
   const today = new Date();
-  const regDeadline = new Date(today.getTime() + 15 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
   const electionDay = new Date(today.getTime() + 45 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
   const handlePinSubmit = () => {
