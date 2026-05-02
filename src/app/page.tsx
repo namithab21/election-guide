@@ -83,11 +83,6 @@ export default function Home() {
               </h1>
               <p className="text-slate-500 font-medium text-lg">A premium, AI-powered command center for Indian citizens.</p>
             </div>
-            <div className="flex gap-4">
-              <div className="bg-blue-50 text-blue-600 px-6 py-3 rounded-2xl font-bold text-xs uppercase tracking-widest border border-blue-100">
-                v2.4 Production
-              </div>
-            </div>
           </div>
           <BentoDashboard />
         </section>
