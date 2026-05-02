@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { CalendarPlus, CheckCircle2, MapPin, ExternalLink, IdCard, Search, FileText, ArrowRight } from 'lucide-react';
-import { generateCalendarLink } from '@/lib/calendar';
+import CalendarButton from './CalendarButton';
 
 type VoterType = 'new' | 'existing' | 'nri' | 'shifting' | null;
 
@@ -156,9 +156,12 @@ export function EligibilityWizard() {
                 <span className="text-gray-600 text-xs">{state} - PIN: {pinCode}</span>
               </div>
             </div>
-             <a href={generateCalendarLink('Polling Day - Go Vote!', electionDay, 'Time to vote! Bring your EPIC or Aadhaar card.')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm font-semibold">
-              <CalendarPlus size={16} /> Add Reminder to Calendar
-            </a>
+             <CalendarButton 
+              title="Polling Day - Go Vote!" 
+              startDate={electionDay} 
+              details="Time to vote! Bring your EPIC or Aadhaar card."
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm font-semibold"
+            />
           </div>
         </div>
       </div>
@@ -193,7 +196,11 @@ export function EligibilityWizard() {
             <p className="text-gray-500 mb-8 text-lg">Select the option that best describes you so we can provide accurate procedures.</p>
             
             <div className="grid sm:grid-cols-2 gap-4">
-              <button onClick={() => { setVoterType('new'); setStep(2); }} className={`p-6 rounded-2xl border transition-all duration-300 text-left hover:shadow-md ${voterType === 'new' ? 'border-blue-600 bg-blue-50' : 'border-gray-200 hover:border-blue-300 bg-white'}`}>
+              <button 
+                onClick={() => { setVoterType('new'); setStep(2); }} 
+                aria-label="New Voter registration guide"
+                className={`p-6 rounded-2xl border transition-all duration-300 text-left hover:shadow-md ${voterType === 'new' ? 'border-blue-600 bg-blue-50' : 'border-gray-200 hover:border-blue-300 bg-white'}`}
+              >
                 <div className="text-blue-600 mb-4"><IdCard size={28} /></div>
                 <h3 className="font-bold text-lg text-gray-900 mb-1">New Voter (18+)</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">I have never registered to vote in India before.</p>
@@ -241,6 +248,7 @@ export function EligibilityWizard() {
               <button 
                 onClick={() => setStep(3)} 
                 disabled={!state}
+                aria-label="Continue to next step"
                 className="bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-all shadow-sm"
               >
                 Continue <ArrowRight size={18} />

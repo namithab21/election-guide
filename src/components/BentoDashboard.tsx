@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TurnoutAnalytics } from "./TurnoutAnalytics";
+import JargonBuster from "./JargonBuster";
 
 const INDIAN_STATES = [
   { name: "Andhra Pradesh", ceo: "Mukesh Kumar Meena", phone: "1950", email: "ceo_andhrapradesh@eci.gov.in", turnout: "79.8%" },
@@ -124,6 +125,7 @@ export function BentoDashboard() {
             <button 
               onClick={handleLocate}
               disabled={isLocating}
+              aria-label="Locate nearest polling booth"
               className="w-full bg-white text-blue-600 py-4 rounded-2xl font-bold text-sm shadow-xl hover:bg-blue-50 transition-all flex items-center justify-center gap-2 group"
             >
               {isLocating ? <Loader2 className="animate-spin" size={18} /> : <Navigation size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
@@ -218,6 +220,11 @@ export function BentoDashboard() {
       {/* 5. Analytics Chart */}
       <BentoCard className="md:col-span-1 lg:col-span-2 bg-white flex flex-col justify-between overflow-visible border-slate-200">
         <TurnoutAnalytics />
+      </BentoCard>
+
+      {/* 6. AI Jargon Buster */}
+      <BentoCard className="md:col-span-1 lg:col-span-2 bg-white border-slate-200">
+        <JargonBuster />
       </BentoCard>
     </motion.div>
   );

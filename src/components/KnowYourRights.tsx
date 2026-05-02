@@ -11,6 +11,7 @@ export function KnowYourRights() {
     <>
       <button 
         onClick={() => setIsOpen(true)}
+        aria-label="Open Know Your Rights modal"
         className="hover:text-[#0F172A] transition-colors font-medium text-[#475569]"
       >
         Know Your Rights
@@ -44,6 +45,7 @@ export function KnowYourRights() {
                 </div>
                 <button 
                   onClick={() => setIsOpen(false)}
+                  aria-label="Close modal"
                   className="text-[#64748B] hover:text-[#0F172A] transition-colors bg-white border border-[#E2E8F0] p-2 rounded-lg hover:bg-[#F1F5F9]"
                 >
                   <X size={20} />
