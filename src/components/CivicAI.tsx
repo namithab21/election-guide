@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Send, Loader2, Info } from 'lucide-react';
 
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
-const genAI = new GoogleGenerativeAI(API_KEY);
+const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 
 export const CivicAI = () => {
   const [input, setInput] = useState('');
@@ -16,8 +16,8 @@ export const CivicAI = () => {
 
   const handleSimplify = async () => {
     if (!input.trim()) return;
-    if (!API_KEY) {
-      setError("AI Services currently unavailable. Please check configuration.");
+    if (!genAI || !API_KEY || API_KEY === "your_api_key_here") {
+      setError("Gemini API Key Missing: Please set NEXT_PUBLIC_GEMINI_API_KEY in environment.");
       return;
     }
 

@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { TurnoutAnalytics } from "./TurnoutAnalytics";
 import { CivicAI } from "./CivicAI";
+import CalendarButton from "./CalendarButton";
 
 const INDIAN_STATES = [
   { name: "Andhra Pradesh", ceo: "Mukesh Kumar Meena", phone: "1950", email: "ceo_andhrapradesh@eci.gov.in", turnout: "79.8%" },
@@ -163,6 +164,14 @@ export function BentoDashboard() {
               <div className="text-[9px] uppercase font-bold text-slate-400">{item.label}</div>
             </div>
           ))}
+        </div>
+        <div className="mt-6">
+          <CalendarButton 
+            title="Lok Sabha General Elections 2029"
+            startDate="2029-05-01"
+            details="Participation in the world's largest democratic exercise. Check your local polling station."
+            className="w-full justify-center py-3"
+          />
         </div>
       </BentoCard>
 

@@ -7,12 +7,58 @@ import { KnowYourRights } from "@/components/KnowYourRights";
 import { SignInModal } from "@/components/SignInModal";
 import { EligibilityWizard } from "@/components/EligibilityWizard";
 import { CivicAI } from "@/components/CivicAI";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
+  const [isAIOpen, setIsAIOpen] = React.useState(false);
+
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-950 font-sans selection:bg-blue-100 selection:text-blue-900 relative overflow-x-hidden">
       
+      {/* AI Assistant FAB */}
+      <div className="fixed bottom-8 right-8 z-[100]">
+        <button
+          onClick={() => setIsAIOpen(!isAIOpen)}
+          aria-label="Open Election AI Assistant"
+          className="group flex items-center gap-3 bg-slate-950 text-white px-6 py-4 rounded-2xl shadow-2xl hover:bg-blue-800 transition-all active:scale-95"
+        >
+          <div className="bg-blue-600 rounded-lg p-1 group-hover:rotate-12 transition-transform">
+            <span className="block w-4 h-4 bg-white rounded-full animate-pulse"></span>
+          </div>
+          <span className="font-bold text-sm">Election AI Assistant</span>
+        </button>
+
+        <AnimatePresence>
+          {isAIOpen && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsAIOpen(false)}
+                className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm -z-10"
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 100, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 100, scale: 0.9 }}
+                className="absolute bottom-20 right-0 w-[90vw] md:w-[450px] -z-10"
+              >
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsAIOpen(false)}
+                    className="absolute -top-12 right-0 text-white font-bold text-xs uppercase tracking-widest hover:text-blue-400 transition-colors"
+                  >
+                    Close [×]
+                  </button>
+                  <CivicAI />
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* Live Status Ticker */}
       <div 
         role="complementary" 
