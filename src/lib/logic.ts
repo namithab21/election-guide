@@ -25,3 +25,14 @@ export const getVoterCategory = (age: number, isCitizen: boolean): string => {
   if (age < 18) return 'Future Voter (Pre-registration available at 17)';
   return 'General Elector';
 };
+
+export const calculateElectionPhase = (currentDate: Date): string => {
+  const electionDate = new Date('2029-05-15');
+  const diffTime = electionDate.getTime() - currentDate.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays < 0) return 'Post-Election';
+  if (diffDays <= 30) return 'Critical: Phase 1 Commences';
+  if (diffDays <= 90) return 'Pre-Election Mobilization';
+  return 'Standard Preparation Phase';
+};

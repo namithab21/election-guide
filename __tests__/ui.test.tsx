@@ -14,9 +14,8 @@ vi.mock('@/components/ChatAssistant', () => ({
 describe('Main Landing Page', () => {
   it('renders the brand name', () => {
     render(<Home />);
-    expect(screen.queryAllByText(/Desh/i).length).toBeGreaterThan(0);
-    expect(screen.queryAllByText(/Ka/i).length).toBeGreaterThan(0);
-    expect(screen.queryAllByText(/Vote/i).length).toBeGreaterThan(0);
+    expect(screen.queryAllByText(/Civic/i).length).toBeGreaterThan(0);
+    expect(screen.queryAllByText(/Pulse/i).length).toBeGreaterThan(0);
   });
 
   it('contains the personalized guide section', () => {

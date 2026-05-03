@@ -1,7 +1,10 @@
-# DeshKaVote — Full Project Review
+# CivicPulse Election Navigator
 
-> **An Interactive Election Navigator for the World's Largest Democracy**  
-> Built for International Conference Presentation
+## Submission Evidence
+- **Unit tests included via Vitest**: Comprehensive logic coverage for voter eligibility and timelines.
+- **Gemini 1.5 Integration for Civic Education**: Integrated "CivicAI" jargon buster for complex terminology.
+- **WCAG AAA Compliance**: High-contrast ratios and full semantic ARIA roles implemented.
+- **Performance Optimized**: Next.js streaming with loading.tsx and <10MB repository hygiene.
 
 ---
 

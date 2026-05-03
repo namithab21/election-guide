@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TurnoutAnalytics } from "./TurnoutAnalytics";
-import JargonBuster from "./JargonBuster";
+import { CivicAI } from "./CivicAI";
 
 const INDIAN_STATES = [
   { name: "Andhra Pradesh", ceo: "Mukesh Kumar Meena", phone: "1950", email: "ceo_andhrapradesh@eci.gov.in", turnout: "79.8%" },
@@ -224,7 +224,7 @@ export function BentoDashboard() {
 
       {/* 6. AI Jargon Buster */}
       <BentoCard className="md:col-span-1 lg:col-span-2 bg-white border-slate-200">
-        <JargonBuster />
+        <CivicAI />
       </BentoCard>
     </motion.div>
   );
